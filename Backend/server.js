@@ -1,8 +1,10 @@
 import express from 'express'
+import cors from 'cors'
 import {checkIngredients} from './settingAi.js'
 import {mockDatabase} from './mockDatabase.js'
 const app = express()
 
+app.use(cors())
 app.use(express.json())
 
 app.listen(3000)
@@ -20,6 +22,7 @@ const idFetcher = (req,res,next)=>{
 
 app.get('/cameraInput',idFetcher,(req,res)=>{
     // only 3 mock data inputs, so looping over them as id = 1,2,3 only
+    console.log("Camera request sent")
     if(id == 4){
         id = 1
     }
@@ -40,6 +43,7 @@ app.get('/cameraInput',idFetcher,(req,res)=>{
 
 // for actual text input, that can be anything.
 app.post('/textInput',(req,res)=>{
+
     const {ingredients} = req.body
 
     const data = async()=>{

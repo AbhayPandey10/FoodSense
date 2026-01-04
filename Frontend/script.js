@@ -1,3 +1,4 @@
+document.addEventListener('DOMContentLoaded', () => {
 const video = document.getElementById('video');
     const startBtn = document.getElementById('startBtn');
     const stopBtn = document.getElementById('stopBtn');
@@ -15,7 +16,7 @@ const video = document.getElementById('video');
         console.error("Error accessing camera:", err);
         alert("Unable to access camera. Please allow permissions.");
       }
-      setinterval(function(){
+      setInterval(function(){
                  cameraOutput();
                  document.getElementById('camera-con').style.display = 'none';
                  document.querySelector('.output-con').style.display = "block";
@@ -38,20 +39,14 @@ const video = document.getElementById('video');
         document.querySelector('.temp2').style.display = "none";
         document.querySelector('.output-con').style.display = "block";
         inputvalue = document.getElementById("text").value;
-        textOutput();
+        textOutput(inputvalue);
  })
- function cam(){
-        document.getElementById('container2').style.display = 'none';
-        document.querySelector('.temp').style.display = "none";
-        document.querySelector('.temp2').style.display = "none";
-        document.getElementById('camera-con').style.display = "flex";
-        
- }
+ 
 
 
 async function cameraOutput(){
   try {
-  const response = await fetch("localhost:3000/cameraInput");
+  const response = await fetch("http://localhost:3000/cameraInput");
   const data = await response.json();
   const jsonstring = JSON.stringify(data);
   const dataObject = JSON.parse(jsonstring);
@@ -59,7 +54,7 @@ async function cameraOutput(){
   let para2 = dataObject["Why this matters"]
   let para3 = dataObject["What it means for you"]
   document.getElementById('para1').innerHTML += para1;
-  document.getElementById('para2').innerHTML+= para2;
+  document.getElementById('para2').innerHTML += para2;
   document.getElementById('para3').innerHTML += para3;
   //stop the camera here
 
@@ -69,26 +64,38 @@ async function cameraOutput(){
   }
 }
 
-async function textOutput(){
+async function textOutput(inputvalue){
   try {
+    console.log(inputvalue)
     const response = await fetch("http://localhost:3000/textInput", {
       method: "POST",
-      body: {
-           "ingredients": `${inputvalue}`,
-      }
+      headers: {
+            "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+            ingredients: inputvalue,
+      })
     });
 
-    const data = await response.json();
-    //console.log(data);
-    const jsonstring = JSON.stringify(data);
-    const dataObject = JSON.parse(jsonstring);
+    const dataObject = await response.json();
+    // const jsonstring = JSON.stringify(data);
+    // const dataObject = JSON.parse(jsonstring);
     let para1 = dataObject["Here's what caught my attention"]
     let para2 = dataObject["Why this matters"]
     let para3 = dataObject["What it means for you"]
     document.getElementById('para1').innerHTML += para1;
-    document.getElementById('para2').innerHTML+= para2;
+    document.getElementById('para2').innerHTML += para2;
     document.getElementById('para3').innerHTML += para3;
   } catch (error) {
     console.error(error);
   }
 }
+})
+
+function cam(){
+        document.getElementById('container2').style.display = 'none';
+        document.querySelector('.temp').style.display = "none";
+        document.querySelector('.temp2').style.display = "none";
+        document.getElementById('camera-con').style.display = "flex";
+        
+ }
