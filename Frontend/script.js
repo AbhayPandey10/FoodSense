@@ -91,7 +91,10 @@ async function textOutput(inputvalue){
   }
 }
 })
-
+const camera = document.getElementById('cam');
+ camera.addEventListener('click',function(){
+   cam();
+ })
 function cam(){
         document.getElementById('container2').style.display = 'none';
         document.querySelector('.temp').style.display = "none";
