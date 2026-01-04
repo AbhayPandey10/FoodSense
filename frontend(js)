@@ -61,7 +61,12 @@ async function textOutput(){
     });
 
     const data = await response.json();
-    console.log(data);
+    //console.log(data);
+    const jsonstring = JSON.stringify(data);
+    const dataObject = JSON.parse(jsonstring);
+    let para1;
+    let para2;
+    let para3;
   } catch (error) {
     console.error(error);
   }
