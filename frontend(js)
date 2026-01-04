@@ -71,6 +71,9 @@ async function textOutput(){
     let para1 = dataObject["Here's what caught my attention"]
     let para2 = dataObject["Why this matters"]
     let para3 = dataObject["What it means for you"]
+    document.getElementById('para1').innerHTML += para1;
+    document.getElementById('para2').innerHTML+= para2;
+    document.getElementById('para3').innerHTML += para3;
   } catch (error) {
     console.error(error);
   }
