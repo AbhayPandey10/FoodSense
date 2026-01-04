@@ -64,9 +64,9 @@ async function textOutput(){
     //console.log(data);
     const jsonstring = JSON.stringify(data);
     const dataObject = JSON.parse(jsonstring);
-    let para1;
-    let para2;
-    let para3;
+    let para1 = dataObject["Here's what caught my attention"]
+    let para2 = dataObject["Why this matters"]
+    let para3 = dataObject["What it means for you"]
   } catch (error) {
     console.error(error);
   }
