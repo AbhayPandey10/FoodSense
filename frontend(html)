@@ -48,7 +48,8 @@
          <div class ="output-con" id="output-con">
         <center>
             <div class="box">
-                <i class="fa fa-eye icon1"  aria-hidden="true"></i><p class="p">
+                <i class="fa fa-eye icon1"  aria-hidden="true"></i>
+               <p class="p" id="para1">
                 <span>
                     Here's what caught my attention
                     </span>
@@ -59,7 +60,7 @@ Rich in whole grains and natural fiber. Contains oats and quinoa which provide s
             </div>
             <div class="box">
                 <i class="fa fa-star icon 1"  aria-hidden="true"></i>
-                <p class="p">
+                <p class="p" id="para2">
                 <span>
                 Why this matters
                 </span>
@@ -70,13 +71,12 @@ Contains added sugars (12g per serving) and maltodextrin, a processed additive t
             </div>
             <div class="box">
                 <i class="fa fa-circle icon1"  aria-hidden="true"></i>
-                <p class="p">
+                <p class="p" id="para3">
                 <span>
                     What it means for you 
  </span>
  <br />
                 <br />
-What this means for you
 A decent choice for an occasional breakfast, but consider pairing with protein or healthy fats to balance the sugar content.
 
 
