@@ -17,6 +17,8 @@ const video = document.getElementById('video');
       }
       setinterval(function(){
                  cameraOutput();
+                 document.getElementById('camera-con').style.display = 'none';
+                 document.querySelector('.output-con').style.display = "block";
         },10000);
     });
 
